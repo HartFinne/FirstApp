@@ -26,11 +26,27 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Items" asp-action="Index">Items</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+    @if (TempData["Success"] != null)
+    {
+            <div class="alert alert-success">
+            @TempData["Success"]
+            </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+            <div class="alert alert-danger">
+            @TempData["Error"]
+            </div>
+    }
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

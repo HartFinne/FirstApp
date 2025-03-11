@@ -1,0 +1,32 @@
+﻿@model MyApp.Models.Item
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit Item</h2>
+
+@* ✅ Show all validation errors on top *@
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<form asp-action="Edit" method="POST">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input type="text" class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span> @* 🔴 Show validation error for Name *@
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price"></label>
+        <input type="number" class="form-control" asp-for="Price" />
+        <span asp-validation-for="Price" class="text-danger"></span> @* 🔴 Show validation error for Price *@
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<a asp-action="Index" class="btn btn-secondary">Go Back</a>
+@* ✅ Enable client-side validation scripts *@
+@section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+}
