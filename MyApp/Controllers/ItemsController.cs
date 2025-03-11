@@ -16,7 +16,7 @@ namespace MyApp.Controllers
         // i created this function to load the items in the index page
         public async Task<IActionResult> LoadItems()
         {
-            var items = await _context.Items.ToListAsync();
+            var items = await _context.Items.Include(s =>s.SerialNumber).ToListAsync();
             return PartialView("Partials/_ItemListPartial", items);
         }
 

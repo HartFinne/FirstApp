@@ -47,6 +47,9 @@
             @TempData["Error"]
             </div>
     }
+
+
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -61,6 +64,21 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+        // Wait 1 seconds and fade out the alert
+        setTimeout(function () {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(alert => {
+                alert.classList.add('fade');
+                alert.classList.add('show'); // Needed if using Bootstrap fade animation
+                alert.style.transition = "opacity 1s ease"; // Smooth fade transition
+                alert.style.opacity = '0';
+                setTimeout(() => alert.remove(), 1000); // remove after fade transition
+            });
+        }, 1000); // 1 seconds
+    </script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
